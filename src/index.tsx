@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
 import "./normalize.css";
 import "./index.css";
 
-const App = () => <h1>Giphy Search</h1>;
+import React from "react";
+import ReactDOM from "react-dom";
+
+import { App } from "./Components/app";
 
 ReactDOM.render(
   <React.StrictMode>
