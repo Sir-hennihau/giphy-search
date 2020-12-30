@@ -1,20 +1,14 @@
 import React from "react";
-import { GiphyFetch } from "@giphy/js-fetch-api";
-
 import { Grid as GiphyGrid } from "@giphy/react-components";
-import { GIPHY_API_KEY } from "../Utils/giphy";
 import styled from "styled-components";
 
-interface GridProps {}
+import { fetchTrendingGifs } from "../Utils/giphy";
 
-const giphyFetch = new GiphyFetch(GIPHY_API_KEY);
-
-const fetchGifs = (offset: number) => giphyFetch.trending({ offset, limit: 9 });
 /** Giphy grid */
-export const Grid = ({}: GridProps) => {
+export const Grid = () => {
   return (
     <GridContainer>
-      <GiphyGrid fetchGifs={fetchGifs} width={800} columns={3} />;
+      <GiphyGrid fetchGifs={fetchTrendingGifs} width={800} columns={3} />;
     </GridContainer>
   );
 };
