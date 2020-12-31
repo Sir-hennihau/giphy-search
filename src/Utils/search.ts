@@ -1,4 +1,5 @@
 import { sample } from "lodash";
+import { createContext } from "react";
 
 const SEARCH_PLACEHOLDER_STRINGS = [
   "Search for your favourite tv show",
@@ -13,3 +14,8 @@ const SEARCH_PLACEHOLDER_STRINGS = [
  */
 export const getSearchPlaceholderString = () =>
   sample(SEARCH_PLACEHOLDER_STRINGS);
+
+export const SearchContext = createContext<{
+  search: string;
+  setSearch: (search: string) => void;
+}>({ search: "", setSearch: (search) => undefined });

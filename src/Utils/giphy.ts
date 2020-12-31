@@ -1,4 +1,5 @@
-import { GiphyFetch } from "@giphy/js-fetch-api";
+import axios from "axios";
+import { GifsResult } from "@giphy/js-fetch-api";
 
 /**
  * My giphy API key.
@@ -7,10 +8,27 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
  */
 export const GIPHY_API_KEY = "gzpMMyTKr2LO966A2JMxlOmnjnDix1MH";
 
-const giphyFetch = new GiphyFetch(GIPHY_API_KEY);
+export const getGifs = async (search?: string) => {
+  if (!search || search === "") {
+    const trendingGifsResponse = await axios.get<GifsResult>(
+      "https://api.giphy.com/v1/gifs/trending",
+      {
+        params: { api_key: GIPHY_API_KEY },
+      }
+    );
 
-export const fetchTrendingGifs = (offset: number) =>
-  giphyFetch.trending({ offset, limit: 9 });
+    return trendingGifsResponse.data;
+  }
 
-export const fetchSearchedGifs = (search: string) => (offset: number) =>
-  giphyFetch.search(search);
+  const searchedGifsResponse = await axios.get<GifsResult>(
+    "https://api.giphy.com/v1/gifs/search",
+    {
+      params: {
+        api_key: GIPHY_API_KEY,
+        q: search,
+      },
+    }
+  );
+
+  return searchedGifsResponse.data;
+};

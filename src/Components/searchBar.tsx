@@ -1,14 +1,33 @@
-import React from "react";
+import { debounce } from "lodash";
+import React, { useCallback, useContext } from "react";
 import styled from "styled-components";
 
-import { getSearchPlaceholderString } from "../Utils/search";
+import { getSearchPlaceholderString, SearchContext } from "../Utils/search";
 
 interface SearchBarProps {}
 
 export const SearchBar = ({}: SearchBarProps) => {
+  const { setSearch } = useContext(SearchContext);
+
+  /*
+   * Debounce set search, because it will trigger an API call on every keystroke otherwise.
+   * We got API usage limits.
+   */
+  const debouncedSetSearch = useCallback(
+    debounce((search: string) => setSearch(search), 300),
+    []
+  );
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    debouncedSetSearch(event.target.value);
+  };
+
   return (
     <StyledInputContainer>
-      <StyledInput placeholder={getSearchPlaceholderString()} />
+      <StyledInput
+        onChange={onChange}
+        placeholder={getSearchPlaceholderString()}
+      />
     </StyledInputContainer>
   );
 };

@@ -1,20 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { SearchContext } from "../Utils/search";
 
 import { Grid } from "./grid";
 import { Headline } from "./headline";
 import { SearchBar } from "./searchBar";
+import { SearchContextWrapper } from "./searchContextWrapper";
 
 export const App = () => (
-  <StyledMain>
-    <AppContainer>
-      <Headline>Giphy Search</Headline>
+  <SearchContextWrapper>
+    <StyledMain>
+      <AppContainer>
+        <Headline>Giphy Search</Headline>
 
-      <SearchBar />
+        <SearchBar />
 
-      <Grid />
-    </AppContainer>
-  </StyledMain>
+        <Grid />
+      </AppContainer>
+    </StyledMain>
+  </SearchContextWrapper>
 );
 
 const AppContainer = styled.div`

@@ -1,25 +1,42 @@
-import React from "react";
-import { Grid as GiphyGrid } from "@giphy/react-components";
+import { GifsResult } from "@giphy/js-fetch-api";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { fetchSearchedGifs, fetchTrendingGifs } from "../Utils/giphy";
+import { getGifs } from "../Utils/giphy";
+import { SearchContext as Context } from "../Utils/search";
 
 /** Giphy grid */
 export const Grid = () => {
+  const { search } = useContext(Context);
+  const [gifs, setGifs] = useState<GifsResult>();
+
+  useEffect(() => {
+    (async () => {
+      const trendingGifs = await getGifs(search);
+
+      setGifs(trendingGifs);
+
+      console.log("trendingsGifs", trendingGifs);
+    })();
+  }, [search]);
+
   return (
     <GridContainer>
-      <GiphyGrid
-        columns={3}
-        fetchGifs={fetchSearchedGifs("Vibing dogs")}
-        noResultsMessage="There was an error retrieving the data."
-        width={800}
-      />
+      {gifs?.data.map((gif, index) => (
+        <img
+          alt={gif.title}
+          key={index}
+          src={gif.images.preview_webp.url}
+          width="100%"
+        />
+      ))}
     </GridContainer>
   );
 };
 
 const GridContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 25px;
   width: 100%;
 `;
