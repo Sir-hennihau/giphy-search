@@ -11,6 +11,7 @@ export const Headline = ({ children }: HeadlineProps) => {
 
 export const StyledHeadline = styled.h1`
   font-size: 50px;
+  margin-bottom: 25px;
   margin-top: 50px;
   text-align: center;
 `;
