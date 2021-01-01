@@ -11,10 +11,11 @@ export const App = () => (
   <SearchContextWrapper>
     <StyledMain>
       <AppContainer>
-        <Headline>Giphy Search</Headline>
+        <StyledHeader>
+          <Headline>Giphy Search</Headline>
 
-        <SearchBar />
-
+          <SearchBar />
+        </StyledHeader>
         <Grid />
       </AppContainer>
     </StyledMain>
@@ -28,4 +29,11 @@ const AppContainer = styled.div`
 const StyledMain = styled.main`
   display: flex;
   justify-content: center;
+`;
+
+const StyledHeader = styled.header`
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 20px 0;
 `;

@@ -12,8 +12,6 @@ export const SearchContextWrapper = ({
 
   const searchContextValue = useMemo(() => ({ search, setSearch }), [search]);
 
-  console.log("search", search);
-
   return (
     <SearchContext.Provider value={searchContextValue}>
       {children}

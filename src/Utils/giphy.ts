@@ -8,27 +8,32 @@ import { GifsResult } from "@giphy/js-fetch-api";
  */
 export const GIPHY_API_KEY = "gzpMMyTKr2LO966A2JMxlOmnjnDix1MH";
 
-export const getGifs = async (search?: string) => {
+export const getGifs = async (offset: number, search?: string) => {
+  let gifsResponse;
+
   if (!search || search === "") {
-    const trendingGifsResponse = await axios.get<GifsResult>(
+    gifsResponse = await axios.get<GifsResult>(
       "https://api.giphy.com/v1/gifs/trending",
       {
-        params: { api_key: GIPHY_API_KEY },
+        params: { offset, api_key: GIPHY_API_KEY },
       }
     );
-
-    return trendingGifsResponse.data;
+  } else {
+    gifsResponse = await axios.get<GifsResult>(
+      "https://api.giphy.com/v1/gifs/search",
+      {
+        params: {
+          offset,
+          api_key: GIPHY_API_KEY,
+          q: search,
+        },
+      }
+    );
   }
 
-  const searchedGifsResponse = await axios.get<GifsResult>(
-    "https://api.giphy.com/v1/gifs/search",
-    {
-      params: {
-        api_key: GIPHY_API_KEY,
-        q: search,
-      },
-    }
-  );
-
-  return searchedGifsResponse.data;
+  return {
+    gifs: gifsResponse.data.data,
+    offset: gifsResponse.data.pagination.offset,
+    totalGifsCount: gifsResponse.data.pagination.total_count,
+  };
 };

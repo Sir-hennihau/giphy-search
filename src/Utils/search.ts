@@ -5,7 +5,7 @@ const SEARCH_PLACEHOLDER_STRINGS = [
   "Search for your favourite tv show",
   '"Vibing dogs"',
   "Enter your name here",
-  "Find memes from Giphy",
+  "Find GIFs from Giphy",
   "How do you feel today?",
 ];
 
