@@ -8,6 +8,15 @@ import { GifsResult } from "@giphy/js-fetch-api";
  */
 export const GIPHY_API_KEY = "gzpMMyTKr2LO966A2JMxlOmnjnDix1MH";
 
+export const DEFAULT_GIPHY_PAGINATION_OFFSET = 50;
+
+/**
+ * Network request to get GIFs from API.
+ *
+ * Either gets Giphy's trending GIFs or GIFs for a specific search query.
+ *
+ * @returns Promise of both GIF and pagination information.
+ */
 export const getGifs = async (offset: number, search?: string) => {
   let gifsResponse;
 
