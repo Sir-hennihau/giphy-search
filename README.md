@@ -1,5 +1,7 @@
 # Giphy Search
 
+[Here](https://sir-hennihau.github.io/) you can see a live demo.
+
 This is a React frontend for requesting GIFs from the Giphy API.
 
 It features:
@@ -7,8 +9,6 @@ It features:
 - Trending GIFs
 - Searching GIFs
 - Infinite scrolling
-
-You can see a live demo of the project here: https://sir-hennihau.github.io/giphy-search/
 
 # Motivation
 
