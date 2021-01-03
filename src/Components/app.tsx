@@ -24,6 +24,11 @@ export const App = () => (
 
 const AppContainer = styled.div`
   width: 800px;
+
+  padding: 20px;
+  /*   @media only screen and (max-width: 556px) {
+    padding: 0 20px;
+  } */
 `;
 
 const StyledMain = styled.main`
@@ -36,4 +41,5 @@ const StyledHeader = styled.header`
   top: 0;
   background: white;
   padding: 20px 0;
+  z-index: 2;
 `;
