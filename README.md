@@ -8,9 +8,11 @@ It features:
 - Searching GIFs
 - Infinite scrolling
 
+You can see a live demo of the project here: https://sir-hennihau.github.io/giphy-search/
+
 # Motivation
 
-I created this project as a reference project to demonstrate how I approach coding. It is used to preview my skills as a React developer during my current application process (January 2021).
+I created this project to demonstrate how I approach coding. It is used to preview my skills as a React developer during my current application process (January 2021).
 
 # Technology
 
