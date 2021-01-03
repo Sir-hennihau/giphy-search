@@ -1,6 +1,6 @@
 # Giphy Search
 
-[Here](https://sir-hennihau.github.io/) you can see a live demo.
+[Here](https://sir-hennihau.github.io/giphy-search/) you can see a live demo.
 
 This is a React frontend for requesting GIFs from the Giphy API.
 
